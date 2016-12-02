@@ -1,0 +1,24 @@
+body {
+  padding-bottom: 100px;
+}
+.add-form-animate {
+    opacity: 1;
+}
+.add-form-animate.ng-hide {
+    opacity: 0;
+}
+.add-form-animate.ng-hide-add, .add-form-animate.ng-hide-remove {
+    transition: all linear 0.3s;
+}
+.setting {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    line-height: 15px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all linear 0.3s;
+}
+.thumbnail:hover .setting {
+    opacity: 1;
+}

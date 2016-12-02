@@ -1,0 +1,168 @@
+<div class="container">
+  <h1>Фільми <a href="#" class="btn btn-default" (click)="addFilm = true; settingFilm = false;">Добавити фільм</a></h1>
+
+  <!-- <div class="row">
+    <div class="col-md-8">
+      <div class="input-group" style="margin-bottom: 20px;">
+        <input type="text" class="form-control" [ngModel]="search">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Пошук</button>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+        <select class="form-control" style="margin-bottom: 20px;">
+          <option value="-">Нові</option>
+          <option value="title">По назві</option>
+          <option value="-rating">По рейтингу</option>
+          <option value="-releaseYear">По даті релізу</option>
+          <option value="genre">По жанрам</option>
+        </select>
+    </div>
+  </div> -->
+
+  <div class="well bs-component add-form-animate" *ngIf="addFilm">
+      <form class="form-horizontal">
+          <fieldset>
+              <legend>Добавити фільм</legend>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Назва фільму</label>
+                  <div class="col-lg-10">
+                      <input type="text" class="form-control" [(ngModel)]="newName" name="newName">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Каринка</label>
+                  <div class="col-lg-10">
+                      <input type="text" class="form-control" [(ngModel)]="newImg" name="newImg">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Жанр</label>
+                  <div class="col-lg-10">
+                      <select class="form-control" [(ngModel)]="newGenre" name="newGenre">
+                          <option>Animation</option>
+                          <option>Comedy</option>
+                          <option>Family</option>
+                          <option>Horror</option>
+                          <option>Thriller</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Дата релізу</label>
+                  <div class="col-lg-10">
+                      <input type="number" class="form-control" [(ngModel)]="newData" name="newData">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Рейтинг</label>
+                  <div class="col-lg-10">
+                      <select class="form-control" [(ngModel)]="newRating" name="newRating">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                      <button class="btn btn-default" (click)="addFilm = false">Відмінити</button>
+                      <button class="btn btn-primary" (click)="addNewFilm(newName, newImg, newData, newRating, newGenre)">Добавити</button>
+                  </div>
+              </div>
+          </fieldset>
+      </form>
+  </div>
+
+  <div class="well bs-component add-form-animate" *ngIf="settingFilm">
+      <form class="form-horizontal">
+          <fieldset>
+              <legend>Редагувати фільм</legend>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Назва фільму</label>
+                  <div class="col-lg-10">
+                      <input type="text" class="form-control" [(ngModel)]="editForm.title" name="editFormTitle">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Каринка</label>
+                  <div class="col-lg-10">
+                      <input type="text" class="form-control" [(ngModel)]="editForm.image" name="editFormImage">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Жанр</label>
+                  <div class="col-lg-10">
+                      <select class="form-control" [(ngModel)]="editForm.genre[0]" name="editFormGenre">
+                          <option value="Animation">Animation</option>
+                          <option value="Comedy">Comedy</option>
+                          <option value="">Family</option>
+                          <option value="Family">Horror</option>
+                          <option value="Thriller">Thriller</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Дата релізу</label>
+                  <div class="col-lg-10">
+                      <input type="number" class="form-control" [(ngModel)]="editForm.releaseYear" name="editFormReleaseYear">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-2 control-label">Рейтинг</label>
+                  <div class="col-lg-10">
+                      <select class="form-control" [(ngModel)]="editForm.rating" name="editFormRating">
+                          <option value="1">10%</option>
+                          <option value="2">20%</option>
+                          <option value="3">30%</option>
+                          <option value="4">40%</option>
+                          <option value="5">50%</option>
+                          <option value="6">60%</option>
+                          <option value="7">70%</option>
+                          <option value="8">80%</option>
+                          <option value="9">90%</option>
+                          <option value="10">100%</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                      <button class="btn btn-default" (click)="settingFilm = false">Відмінити</button>
+                      <button class="btn btn-primary" (click)="chengeFilm()">Добавити</button>
+                      <button class="btn btn-danger" (click)="deleteFilm()">Видалити</button>
+                  </div>
+              </div>
+          </fieldset>
+      </form>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4" *ngFor="let film of films; let i = index">
+      <div class="thumbnail">
+        <div class="label label-default setting" (click)="settingsFilmForm(film, i)">редагувати елемент</div>
+        <img src="{{film?.image}}" alt="...">
+        <div class="caption">
+          <h4><a routerLink="/item" [queryParams]="film">{{film?.title}}</a></h4>
+          <p>
+            <span *ngFor="let elem of film?.genre"><b>{{elem}}<span>, </span></b></span>
+          </p>
+          <p>Реліз: <b>{{film?.releaseYear}}</b></p>
+          <div class="progress">
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" [style.width.%]="film?.rating * 10">
+              <span>Рейтинг: {{film?.rating * 10}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
