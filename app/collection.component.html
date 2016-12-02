@@ -1,25 +1,25 @@
 <div class="container">
   <h1>Фільми <a href="#" class="btn btn-default" (click)="addFilm = true; settingFilm = false;">Добавити фільм</a></h1>
 
-  <!-- <div class="row">
+  <div class="row">
     <div class="col-md-8">
       <div class="input-group" style="margin-bottom: 20px;">
-        <input type="text" class="form-control" [ngModel]="search">
+        <input type="text" class="form-control" [(ngModel)]="search">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">Пошук</button>
         </span>
       </div>
     </div>
     <div class="col-md-4">
-        <select class="form-control" style="margin-bottom: 20px;">
-          <option value="-">Нові</option>
+        <select class="form-control" style="margin-bottom: 20px;" [(ngModel)]="sortParam">
+          <!-- <option value="-">Нові</option> -->
           <option value="title">По назві</option>
-          <option value="-rating">По рейтингу</option>
-          <option value="-releaseYear">По даті релізу</option>
+          <option value="rating">По рейтингу</option>
+          <option value="releaseYear">По даті релізу</option>
           <option value="genre">По жанрам</option>
         </select>
     </div>
-  </div> -->
+  </div>
 
   <div class="well bs-component add-form-animate" *ngIf="addFilm">
       <form class="form-horizontal">
@@ -145,7 +145,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-md-4" *ngFor="let film of films; let i = index">
+    <div class="col-sm-6 col-md-4" *ngFor="let film of films | searchFilter:sortParam">
       <div class="thumbnail">
         <div class="label label-default setting" (click)="settingsFilmForm(film, i)">редагувати елемент</div>
         <img src="{{film?.image}}" alt="...">

@@ -22,6 +22,7 @@ export class CollectionComponent {
     newData: number;
     newRating: number;
     newGenre: string;
+    sortParam: string = 'title';
 
     constructor(private httpService: HttpService){}
 

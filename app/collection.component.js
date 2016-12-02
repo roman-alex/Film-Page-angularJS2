@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var http_service_1 = require("./http.service");
+var core_1 = require('@angular/core');
+var http_service_1 = require('./http.service');
 var CollectionComponent = (function () {
     function CollectionComponent(httpService) {
         this.httpService = httpService;
@@ -18,6 +18,7 @@ var CollectionComponent = (function () {
         this.settingFilm = false;
         this.editForm = [];
         this.itemCopy = [];
+        this.sortParam = 'title';
     }
     CollectionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -61,16 +62,16 @@ var CollectionComponent = (function () {
             _this.settingFilm = false;
         }, 300);
     };
+    CollectionComponent = __decorate([
+        core_1.Component({
+            selector: 'collection-app',
+            templateUrl: 'app/collection.component.html',
+            styleUrls: ['app/collection.component.css'],
+            providers: [http_service_1.HttpService]
+        }), 
+        __metadata('design:paramtypes', [http_service_1.HttpService])
+    ], CollectionComponent);
     return CollectionComponent;
 }());
-CollectionComponent = __decorate([
-    core_1.Component({
-        selector: 'collection-app',
-        templateUrl: 'app/collection.component.html',
-        styleUrls: ['app/collection.component.css'],
-        providers: [http_service_1.HttpService]
-    }),
-    __metadata("design:paramtypes", [http_service_1.HttpService])
-], CollectionComponent);
 exports.CollectionComponent = CollectionComponent;
 //# sourceMappingURL=collection.component.js.map
